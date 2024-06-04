@@ -1,0 +1,27 @@
+
+< DrugBAN >
+torch>=1.7.1
+dgl>=0.7.1
+dgllife>=0.2.8
+numpy>=1.20.2
+scikit-learn>=0.24.2
+pandas>=1.2.4
+prettytable>=2.2.1
+rdkit~=2021.03.2
+yacs~=0.1.8
+comet-ml~=3.23.1 # optional
+
+# create a new conda environment
+conda create --name drugban python=3.8
+conda activate drugban
+
+# install requried python dependencies
+conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=10.2 -c pytorch
+conda install -c dglteam dgl-cuda10.2==0.7.1
+conda install -c conda-forge rdkit==2021.03.2
+pip install dgllife==0.2.8
+pip install -U scikit-learn
+pip install yacs
+pip install prettytable
+
+
