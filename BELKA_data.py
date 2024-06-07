@@ -65,10 +65,11 @@ def filter_db(df, ps):
 ft_trn = filter_db(trn, prot_seq)
 ft_tst = filter_db(tst, prot_seq)
 
+import numpy as np
 for protein_name in ft_trn['protein_name'].unique():
     s_trn = ft_trn[ft_trn['protein_name'] == protein_name]
     s_tst = ft_tst[ft_tst['protein_name'] == protein_name]
-    s_tst['Y'] = 0
+    s_tst['Y'] = np.random.randint(0, 2, size=len(s_tst))
     s_trn.to_csv(f'leash-BELKA/train_{protein_name}.csv', index=False)
     s_tst.to_csv(f'leash-BELKA/test_{protein_name}.csv', index=False)
     print(protein_name, 'done')
