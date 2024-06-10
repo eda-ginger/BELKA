@@ -7,29 +7,29 @@ test_path = 'leash-BELKA/test.parquet'
 # load train
 con = duckdb.connect()
 
-# trn = con.query(f"""(SELECT *
-#                         FROM parquet_scan('{train_path}')
-#                         WHERE binds = 0
-#                         ORDER BY random()
-#                         LIMIT 2000000)
-#                         UNION ALL
-#                         (SELECT *
-#                         FROM parquet_scan('{train_path}')
-#                         WHERE binds = 1
-#                         ORDER BY random()
-#                         LIMIT 2000000)""").df()
-
 trn = con.query(f"""(SELECT *
                         FROM parquet_scan('{train_path}')
                         WHERE binds = 0
                         ORDER BY random()
-                        LIMIT 30000)
+                        LIMIT 2000000)
                         UNION ALL
                         (SELECT *
                         FROM parquet_scan('{train_path}')
                         WHERE binds = 1
                         ORDER BY random()
-                        LIMIT 30000)""").df()
+                        LIMIT 2000000)""").df()
+
+# trn = con.query(f"""(SELECT *
+#                         FROM parquet_scan('{train_path}')
+#                         WHERE binds = 0
+#                         ORDER BY random()
+#                         LIMIT 30000)
+#                         UNION ALL
+#                         (SELECT *
+#                         FROM parquet_scan('{train_path}')
+#                         WHERE binds = 1
+#                         ORDER BY random()
+#                         LIMIT 30000)""").df()
 
 con.close()
 
